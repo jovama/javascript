@@ -29,7 +29,7 @@ for (let messageIndex = 0; messageIndex < message.length; messageIndex++)
 		newIndex -= 26; //since the alphabet has only 26 letters, if the new position's index is greater than 25 (25 and not 26 because we're counting the arrays' elements from 0), we will "reset" the newIndex by subtracting 26 in order to get a number from 0 to 25
 	}
 	
-	secretMessage += alphabet[newIndex]; //concatenating the "secret" string
+	secretMessage += alphabet[newIndex]; //concatenating the "shifted" letters into our "secret" string
 }
 
 console.log('The old message:', message);
