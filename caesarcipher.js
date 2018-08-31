@@ -4,34 +4,44 @@
 
 //for now, the input message will not contain any spaces or punctuation
 
-let message = 'todayisawonderfuldayenjoyitfully';
-let secretMessage = '';
+//let message = 'todayisawonderfuldayenjoyitfully';
+let message = 'abcdefghijklmnopqrstuvwxyz';
+let secretMessage;
 
 const alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 
-//I am defining a shift number that is divisible by 26 on purpose here - the 26 positions alphabet shift will not encode the message and that's why we have the IF statement below
+let shiftNum = 3; //bear in mind that shiftNum should not be 0 or divisible by 26 - in that case, no change will be made to the message
 
-let shiftNum = 52;
-
+//if the shift number is 0 or divisible by 26, we will alert the user and set the shift number to default value of 1 
 if (shiftNum == 0 || (shiftNum % 26 == 0))
 {
 	alert('The number of positions to shift the message cannot be 0 or divisible by 26.');
-	alert('Changing the shift number to the default: 1');
+	alert('Setting the shift number to the default: 1');
 	shiftNum = 1;
 }
 
-for (let messageIndex = 0; messageIndex < message.length; messageIndex++)
+//creating a function with 2 parameters - the message to encode and the shift number
+function messageEncoder(message, shiftNum)
 {
-	let newIndex = alphabet.indexOf(message[messageIndex]) + shiftNum; //increasing the index for the shiftNum of positions
-
-	if (newIndex > 25)
+	secretMessage = ''; //"emptying" this string, in case of multiple function calls
+	console.log('The old message is:', message);
+	
+	for (let messageIndex = 0; messageIndex < message.length; messageIndex++)
 	{
-		newIndex -= 26; //since the alphabet has only 26 letters, if the new position's index is greater than 25 (25 and not 26 because we're counting the arrays' elements from 0), we will "reset" the newIndex by subtracting 26 in order to get a number from 0 to 25
+		let newIndex = alphabet.indexOf(message[messageIndex]) + shiftNum; //increasing the index for the shiftNum of positions
+
+		if (newIndex > 25)
+		{
+			newIndex -= 26; //since the alphabet has only 26 letters, if the new position's index is greater than 25 (25 and not 26 because we're counting the arrays' elements from 0), we will "reset" the newIndex by subtracting 26 in order to get a number from 0 to 25
+		}
+	
+		secretMessage += alphabet[newIndex]; //concatenating the "shifted" letters into our "secret" string
 	}
 	
-	secretMessage += alphabet[newIndex]; //concatenating the "shifted" letters into our "secret" string
+	return console.log('The new message is:', secretMessage);
 }
 
-console.log('The old message:', message);
+//adding function calls
+messageEncoder(message, shiftNum);
 
-console.log('The new message:', secretMessage);
+messageEncoder('letstrysomethingnew', 2);
