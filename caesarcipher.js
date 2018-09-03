@@ -1,6 +1,6 @@
 //after reading a couple of short texts on Sololearn on the topic of cryptography, I decided to try and write a program that would encipher a message
 //first is the Caesar Cipher
-//this is my first version, I already have lots of ideas on how to improve it. For example, I would like to make a function from this code, as well as to decide what to do with spaces, punctuation, lower/upper case etc.
+//this is my second version, in which I made a function from the code in the first version. I know there are multiple ways to improve this, for example, I would need to decide what to do with spaces, punctuation, lower/upper case etc.
 
 //for now, the input message will not contain any spaces or punctuation
 
